@@ -2,8 +2,6 @@ library(shiny)
 data(mtcars)
 library(shiny)
 
-
-
 shinyServer(
   function(input,output){
     #multifit <- lm(mpg~ am + cyl, data = mtcars)
