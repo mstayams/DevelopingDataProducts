@@ -1,0 +1,52 @@
+Project Presentation
+========================================================
+author: Satya Medicherla
+date: 
+autosize: true
+transition : rotate
+transition-speed :fast
+GitHub URL :  https://github.com/mstayams/DevelopingDataProducts
+Application URL :  https://satyams.shinyapps.io/mtcars
+Executive Summary 
+========================================================
+
+The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973-74 models).  We study the dependency of mileage on different features like number of cylinders, transmission type, weight of the car, horse power etc.  We will use the summary command to display the data ranges for different features of the dataset.
+
+```{r}
+library(datasets)
+data(mtcars)
+summary(mtcars)
+```
+
+Multi-variate Linear Model
+==================================================
+
+We will fit a multi-variate linear regression model for miles per gallon on various predictors like cylinder, weight of the car,  transmission type, horsepower etc. This model helps us predict the mileage for different combinatins of the values of the freatures or predictors.   
+
+```{r gen_mlm,echo = TRUE}
+multifit <- lm(mpg~ am + cyl + hp + wt + carb + qsec + disp, data = mtcars)
+summary(multifit)
+```
+
+Predit mileage changing the features
+=====================================
+This application provides a GUI based interface that uses the above fitted multi-variate regression model to predict the mileage based on the inputs selected/entered in the GUI based input panel.
+
+![alt text](ApplicationImage.png)
+
+Using this Application
+=====================================
+To change the slider bar inputs, drag the indicator on the slider bar.  To change numeric inputs,  click on the up or down arrow. Finally click on the Submit button to display the predicted output.  As shown below, a six cylinder manual transmission car of 150 horse power weighing 3 tons with 4 carburetors,10 qsec and displacement 100  is expected to give a mileage of 14.36129.  
+ 
+```{r gen_pred,echo = TRUE}
+predict(multifit,newdata=data.frame(
+                                    am=1,
+                                    cyl=6,
+                                    hp=150,
+                                    wt=3,
+                                    carb=4,
+                                    qsec=10,
+                                    disp=100
+                                    )
+        )
+```
