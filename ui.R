@@ -1,7 +1,7 @@
 library(shiny)
 shinyUI(
   pageWithSidebar(
-    headerPanel("Please enter inputs and click Submit Button"),
+    headerPanel("Car Mileage Prediction"),
     sidebarPanel(
       numericInput('trans',
                    label='Transmission(0-automatic/1-manual)',
@@ -41,7 +41,7 @@ shinyUI(
     
     mainPanel(
       h3("Predicted car Mileage for the input parameters"),
-      h4("you entered"),
+      h4("You entered"),
       verbatimTextOutput('trans'),
       verbatimTextOutput('cylinders'),
       verbatimTextOutput('hp'),
@@ -50,8 +50,10 @@ shinyUI(
       verbatimTextOutput('qsec'),
       verbatimTextOutput('disp'),
       h4("Predicted  Miles per gallon:"),
-      verbatimTextOutput("pred")
+      verbatimTextOutput("pred"),
+      h5("------------------------------------------------------------------------------------"),
+      h5("GitHub URL :  https://github.com/mstayams/DevelopingDataProducts"),
+      h5("Rpubs URL :  http://rpubs.com/satyams/156984")
     )
   )
 )
-
